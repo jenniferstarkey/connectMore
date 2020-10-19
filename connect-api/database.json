@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "email": "loveliecompany@gmail.com",
+      "firstName": "Jennifer",
+      "lastName": "Starkey",
+      "zipCode": "37090",
+      "id": 1
+    },
+    {
+        "email": "me@me.com",
+        "firstName": "Jenn",
+        "lastName": "Star",
+        "zipCode": "37115",
+        "id": 1
+      }
+  ]
+}
