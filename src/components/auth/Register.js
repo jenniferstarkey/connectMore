@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import "./Login.css";
 
 export const Register = props => {
@@ -107,7 +107,7 @@ export const Register = props => {
             autoFocus
           /></div>
           <button type="submit"> Sign in </button>
-          <button type="button" link to=""> Go Back </button>
+          <button type="button" onClick={() => {history.push("/login")}}> Go Back </button>
 
         
       </form>

@@ -14,5 +14,44 @@
         "zipCode": "37115",
         "id": 1
       }
+  ],
+
+  "contacts": [
+    {
+      "id":1,
+      "contactCreated":"",
+      "name":"Cheryl",
+      "phoneNumber":6151110000,
+      "email":"her@her.com",
+      "company":"NSS",
+      "position":"recruiter",
+      "location":"Nashville",
+      "notes":"has huskies too",
+      "followUpFrequency":""
+    },
+    {
+      "id":2,
+      "contactCreated":"",
+      "name":"Cheryl",
+      "phoneNumber":6151110000,
+      "email":"her@her.com",
+      "company":"NSS",
+      "position":"recruiter",
+      "location":"Nashville",
+      "notes":"has huskies too",
+      "followUpFrequency":""
+    },
+    {
+      "id":3,
+      "contactCreated":"",
+      "name":"Cheryl",
+      "phoneNumber":6151110000,
+      "email":"her@her.com",
+      "company":"NSS",
+      "position":"recruiter",
+      "location":"Nashville",
+      "notes":"has huskies too",
+      "followUpFrequency":""
+    }
   ]
 }
