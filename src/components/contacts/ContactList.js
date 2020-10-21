@@ -9,6 +9,7 @@ import "./Contact.css"
 
 export const ContactList = () =>{
     const { contacts, getContacts } = useContext(ContactContext)
+
     useEffect(()=>{
         getContacts()
     },[])

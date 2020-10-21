@@ -10,6 +10,7 @@ export const ContactContext = createContext()
 
 export const ContactProvider = (props) => {
     const [contacts, setContacts] = useState([])
+    
 //get all the contacts
     const getContacts = () => {
         return fetch("http://localhost:8088/contacts")
