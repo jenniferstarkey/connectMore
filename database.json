@@ -1,19 +1,91 @@
 {
-  "posts": [
+  "users": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "email": "loveliecompany@gmail.com",
+      "firstName": "Jennifer",
+      "lastName": "Starkey",
+      "zipCode": "37090",
+      "id": 1
+    },
+    {
+      "email": "me@me.com",
+      "firstName": "Jenn",
+      "lastName": "Star",
+      "zipCode": "37115",
+      "id": 1
+    },
+    {
+      "email": "she@she.com",
+      "firstName": "Jenn",
+      "lastName": "Star",
+      "zipCode": "37115",
+      "id": 2
+    },
+    {
+      "email": "mre@me.com",
+      "firstName": "undefined",
+      "lastName": "Starkey",
+      "zipCode": "37090",
+      "id": 3
+    },
+    {
+      "email": "gfdhsg@gfjsal.com",
+      "firstName": "Jennifer",
+      "lastName": "Starkey",
+      "zipCode": "37090",
+      "id": 4
+    },
+    {
+      "email": "jenn@email.com",
+      "firstName": "Jennifer",
+      "lastName": "Starkey",
+      "zipCode": "37090",
+      "id": 5
+    },
+    {
+      "email": "shes@she.com",
+      "firstName": "Jennifer",
+      "lastName": "Starkey",
+      "zipCode": "37090",
+      "id": 6
     }
   ],
-  "comments": [
+  "contacts": [
     {
       "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "contactCreated": "",
+      "name": "Cheryl",
+      "phoneNumber": 6151110000,
+      "email": "her@her.com",
+      "company": "NSS",
+      "position": "recruiter",
+      "location": "Nashville",
+      "notes": "has huskies too",
+      "followUpFrequency": ""
+    },
+    {
+      "id": 2,
+      "contactCreated": "",
+      "name": "Cheryl",
+      "phoneNumber": 6151110000,
+      "email": "her@her.com",
+      "company": "NSS",
+      "position": "recruiter",
+      "location": "Nashville",
+      "notes": "has huskies too",
+      "followUpFrequency": ""
+    },
+    {
+      "id": 3,
+      "contactCreated": "",
+      "name": "Cheryl",
+      "phoneNumber": 6151110000,
+      "email": "her@her.com",
+      "company": "NSS",
+      "position": "recruiter",
+      "location": "Nashville",
+      "notes": "has huskies too",
+      "followUpFrequency": ""
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

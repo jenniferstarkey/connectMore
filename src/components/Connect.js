@@ -1,4 +1,5 @@
 import React from "react"
+import ReactDOM from "react-dom"
 import {Route, Redirect} from "react-router-dom"
 import {ApplicationViews} from "./ApplicationViews"
 import {Navbar} from "./nav/Navbar"

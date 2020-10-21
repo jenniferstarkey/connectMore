@@ -1,14 +1,26 @@
 import React, { useRef } from "react";
 import { useHistory, Link } from "react-router-dom";
 import "./Login.css";
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
+import LocationCityOutlinedIcon from '@material-ui/icons/LocationCityOutlined';
+import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
 
-export const Register = props => {
+
+export const Register = () => {
   const firstName = useRef();
   const lastName = useRef();
   const zipCode = useRef();
   const email = useRef();
   const conflictDialog = useRef();
   const history = useHistory();
+
+  const useStyles = makeStyles((theme) => ({
+    margin: {
+      margin: theme.spacing(1),
+    },
+  }));
 
   const existingUserCheck = () => {
     return fetch(`http://localhost:8088/users?email=${email.current.value}`)
@@ -46,8 +58,10 @@ export const Register = props => {
       }
     });
   };
-
+  
+  const classes = useStyles();
   return (
+
     <main style={{ textAlign: "left" }}>
       <dialog className="dialog dialog--password" ref={conflictDialog}>
         <div>Account with that email address already exists</div>
@@ -63,9 +77,14 @@ export const Register = props => {
         <h1 className="h3 mb-3 font-weight-normal">
           Register
         </h1>
+
           <div>
-          <label htmlFor="firstName">What's your first name? </label>
-          <input
+          <Grid container spacing={1} alignItems="flex-end">
+            <Grid item>
+              <PersonOutlineOutlinedIcon />
+            </Grid>
+          <Grid item>
+          <input htmlFor="firstName" label="What's your first name?"
             ref={firstName}
             type="text"
             name="firstName"
@@ -73,10 +92,18 @@ export const Register = props => {
             placeholder="first name"
             required
             autoFocus
-          /></div>
+          /> 
+          </Grid>
+          </Grid>
+          </div>
+
           <div>
-          <label htmlFor="lastName">What's your last name? </label>
-          <input
+          <Grid container spacing={1} alignItems="flex-end">
+            <Grid item>
+              <PersonOutlineOutlinedIcon />
+            </Grid>
+          <Grid item>
+          <input htmlFor="lastName" label="What's your last name?"
             ref={lastName}
             type="text"
             name="lastName"
@@ -84,20 +111,33 @@ export const Register = props => {
             placeholder="last name"
             required
             autoFocus
-          /></div>
+          />
+          </Grid>
+          </Grid></div>
         <div>
-          <label htmlFor="inputEmail">Email Address </label>
-          <input
+
+        <Grid container spacing={1} alignItems="flex-end">
+            <Grid item>
+              <EmailOutlinedIcon />
+            </Grid>
+          <Grid item>
+          <input htmlFor="email" label="What's your email address?"
             ref={email}
             type="email"
             name="email"
             className="form-control"
             placeholder="Email address"
             required
-          /></div>
+          /></Grid>
+          </Grid></div>
+          
           <div>
-          <label htmlFor="zipCode">What's your zip code? </label>
-          <input
+          <Grid container spacing={1} alignItems="flex-end">
+            <Grid item>
+              <LocationCityOutlinedIcon />
+            </Grid>
+          <Grid item>
+          <input htmlFor="zipCode" label="What's your zipCode?"
             ref={zipCode}
             type="text"
             name="zipCode"
@@ -105,8 +145,10 @@ export const Register = props => {
             placeholder="zip code"
             required
             autoFocus
-          /></div>
-          <button type="submit"> Sign in </button>
+          /></Grid>
+          </Grid></div>
+
+          <button type="submit"> Register </button>
           <button type="button" onClick={() => {history.push("/login")}}> Go Back </button>
 
         
