@@ -1,3 +1,12 @@
+# Connect More
+
+# WireFrame ![picture alt](Wireframe.png "Connect More Wireframe")
+
+# Component Outline ![picture alt](MindMap.png "Connect More Plan")
+
+# ERD ![picture alt](connectMoreERD.png "Connect More ERD")
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
