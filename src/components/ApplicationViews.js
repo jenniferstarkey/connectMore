@@ -22,16 +22,16 @@ export const ApplicationViews = (props) =>{
         </ContactProvider>
 
         <ContactProvider>
-            <Route exact path="/contacts/detail/:contactId(\d+)">
+            <Route exact path="/contacts/details/:contactId(\d+)">
                 <ContactDetail />
             </Route>
         </ContactProvider>
 
-        {/* <ContactProvider>
+        <ContactProvider>
             <Route exact path="/contacts/edit/:contactId(\d+)">
-                <ContactForm />
+                <ContactDetail />
             </Route>
-        </ContactProvider> */}
+        </ContactProvider>
 
         {/* <ContactProvider>
             <Route exact path="/events/create">
