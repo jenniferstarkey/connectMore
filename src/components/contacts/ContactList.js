@@ -2,7 +2,7 @@
 //ADD NEW CONTACTS
 
 import React, { useContext, useEffect, useState } from "react"
-import { useHistory, useParams } from "react-router-dom"
+import { useHistory, useParams, Link } from "react-router-dom"
 import { ContactContext } from "./ContactProvider"
 import "./Contact.css"
 import { makeStyles } from '@material-ui/core/styles';
@@ -21,7 +21,27 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
+import { DataGrid } from '@material-ui/data-grid';
 
+const useStyles = makeStyles((theme) => ({
+    table: {
+        minWidth: 200,
+    },
+    appBar: {
+        position: 'relative',
+    },
+    title: {
+        marginLeft: theme.spacing(2),
+        flex: 1,
+    },
+    pageContent: {
+        margin: theme.spacing(5),
+        padding: theme.spacing(3)
+    },
+    searchInput: {
+        width: '75%'
+    }
+}));
 
 //TRANSITION FOR THE FORM POP UP
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -97,31 +117,13 @@ export const ContactForm = () => {
     const handleClose = () => {
         setOpen(false);
     };
-    const useStyles = makeStyles((theme) => ({
-        table: {
-            minWidth: 200,
-        },
-        appBar: {
-            position: 'relative',
-        },
-        title: {
-            marginLeft: theme.spacing(2),
-            flex: 1,
-        },
-        pageContent: {
-            margin: theme.spacing(5),
-            padding: theme.spacing(3)
-        },
-        searchInput: {
-            width: '75%'
-        }
-    }));
+    
 
 //INPUT FORM
     return (
         <div>
             <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-                Add a new connection
+                {contactId ? <>Update your contact</> : <>Add new contact</>}
              </Button>
             <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
                 <AppBar className={classes.appBar}>
@@ -138,7 +140,7 @@ export const ContactForm = () => {
                                 constructContactObj()
                                 handleClose()
                             }}>
-                            save
+                            {contactId ? <>Update</> : <>Add</>}
                         </Button>
                     </Toolbar>
                 </AppBar>
@@ -279,7 +281,9 @@ export const ContactList = () => {
             <div className="contacts-table">
                 {ContactForm()}
             </div>
-            <TableContainer component={Paper}>
+
+
+            {/* <TableContainer component={Paper}>
                 <Table className={classes.table} aria-label="simple table">
                     <TableHead>
                         <TableRow>
@@ -292,7 +296,9 @@ export const ContactList = () => {
                         {contacts.map((contact) => (
                             <TableRow key={contact.id}>
                                 <TableCell component="th" scope="row">
-                                    {contact.firstName} {contact.lastName}
+                               <Link to={`/contacts/details/${contact.id}`}>
+                               {contact.firstName} {contact.lastName}
+                                </Link>
                                 </TableCell>
                                 <TableCell align="right">{contact.email}</TableCell>
                                 <TableCell align="right">{contact.location}</TableCell>
@@ -300,7 +306,7 @@ export const ContactList = () => {
                         ))}
                     </TableBody>
                 </Table>
-            </TableContainer>
+            </TableContainer> */}
         </>
     );
 }
