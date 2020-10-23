@@ -1,7 +1,7 @@
 import React from "react"
 import "./Connect.js"
 
-// home page here
+//HOME PAGE HERE
 
 export const Home =() => (
     <>

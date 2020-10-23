@@ -1,4 +1,4 @@
-//info for one contact selected
+//INFO FOR ONE SELECTED CONTACT
 
 import React from "react"
 import {Link} from "react-router-dom"

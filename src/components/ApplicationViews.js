@@ -5,6 +5,7 @@ import {Home} from "./Home"
 import {ContactProvider} from "./contacts/ContactProvider"
 import {ContactList} from "./contacts/ContactList"
 import { ContactDetail } from "./contacts/ContactDetails"
+// import { ContactForm } from "./contacts/ContactForm"
 
 export const ApplicationViews = (props) =>{
     return (
@@ -25,6 +26,18 @@ export const ApplicationViews = (props) =>{
                 <ContactDetail />
             </Route>
         </ContactProvider>
+
+        {/* <ContactProvider>
+            <Route exact path="/contacts/edit/:contactId(\d+)">
+                <ContactForm />
+            </Route>
+        </ContactProvider> */}
+
+        {/* <ContactProvider>
+            <Route exact path="/events/create">
+                <ContactForm />
+            </Route>
+        </ContactProvider> */}
         </>
     
 

@@ -8,54 +8,20 @@
       "id": 1
     },
     {
-      "email": "me@me.com",
-      "firstName": "Jenn",
-      "lastName": "Star",
-      "zipCode": "37115",
-      "id": 1
-    },
-    {
       "email": "she@she.com",
       "firstName": "Jenn",
       "lastName": "Star",
       "zipCode": "37115",
       "id": 2
-    },
-    {
-      "email": "mre@me.com",
-      "firstName": "undefined",
-      "lastName": "Starkey",
-      "zipCode": "37090",
-      "id": 3
-    },
-    {
-      "email": "gfdhsg@gfjsal.com",
-      "firstName": "Jennifer",
-      "lastName": "Starkey",
-      "zipCode": "37090",
-      "id": 4
-    },
-    {
-      "email": "jenn@email.com",
-      "firstName": "Jennifer",
-      "lastName": "Starkey",
-      "zipCode": "37090",
-      "id": 5
-    },
-    {
-      "email": "shes@she.com",
-      "firstName": "Jennifer",
-      "lastName": "Starkey",
-      "zipCode": "37090",
-      "id": 6
     }
   ],
   "contacts": [
     {
       "id": 1,
       "contactCreated": "",
+      "userId": 1,
       "firstName": "Cheryl",
-      "lastName":"Winter",
+      "lastName": "Winter",
       "phoneNumber": 6151110000,
       "email": "hehgr@her.com",
       "company": "NSS",
@@ -67,8 +33,9 @@
     {
       "id": 2,
       "contactCreated": "",
+      "userId": 3,
       "firstName": "Jane",
-      "lastName":"Winter",
+      "lastName": "Winter",
       "phoneNumber": 6151110000,
       "email": "her3@her.com",
       "company": "NSS",
@@ -80,8 +47,9 @@
     {
       "id": 3,
       "contactCreated": "",
+      "userId": 2,
       "firstName": "Cheryl",
-      "lastName":"Winter",
+      "lastName": "Jones",
       "phoneNumber": 6151110000,
       "email": "hers@her.com",
       "company": "NSS",
@@ -94,7 +62,8 @@
       "id": 1,
       "contactCreated": "",
       "firstName": "Mike",
-      "lastName":"Winter",
+      "userId": 2,
+      "lastName": "Winter",
       "phoneNumber": 6151110000,
       "email": "heRr@her.com",
       "company": "NSS",
