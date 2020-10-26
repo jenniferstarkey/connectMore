@@ -6,11 +6,13 @@
 import React, {useState, createContext} from "react"
 import "./Contact.css"
 
+
 export const ContactContext = createContext()
 
 export const ContactProvider = (props) => {
     const [contacts, setContacts] = useState([])
     const currentUser = parseInt(localStorage.getItem("connectMore_user"))
+    const [searchTerms, setSearchTerms] = useState("")
     
 //GET ALL CONTACTS
     const getContacts = () => {
@@ -35,23 +37,30 @@ export const ContactProvider = (props) => {
         .then(getContacts)
     }
 //EDIT EXISTING CONTACTS
-    const editContacts = contact => {
-        return fetch(`http://localhost:8088/contacts/${contact.id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(contact)
+const editContact = contact => {
+    return fetch(` http://localhost:8088/contacts/${contact.id}`,{
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(contact)
+    })
+    .then(getContacts)
+}
+
+//DELETE CONTACTS
+    const removeContact = contactId => {
+        return fetch(`http://localhost:8088/contacts/${contactId}`,{
+        method: "DELETE"
         })
         .then(getContacts)
     }
-//DELETE CONTACTS
 
     return(
         <ContactContext.Provider value={{
-            contacts, getContacts, getContactById, addContact, editContacts
+            contacts, getContacts, getContactById, addContact, editContact, removeContact, setSearchTerms, searchTerms,
         }}>
             {props.children}
         </ContactContext.Provider>
     )
- }
+ } 
