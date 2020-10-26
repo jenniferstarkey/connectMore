@@ -52,20 +52,6 @@
   ],
   "contacts": [
     {
-      "id": 1,
-      "contactCreated": "",
-      "userId": 1,
-      "firstName": "Cheryl",
-      "lastName": "Winter",
-      "phoneNumber": 6151110000,
-      "email": "hehgr@her.com",
-      "company": "NSS",
-      "position": "recruiter",
-      "location": "Nashville",
-      "notes": "has huskies too",
-      "followUpFrequency": ""
-    },
-    {
       "id": 2,
       "contactCreated": "",
       "userId": 3,
@@ -80,41 +66,29 @@
       "followUpFrequency": ""
     },
     {
-      "id": 3,
-      "contactCreated": "",
-      "userId": 2,
-      "firstName": "Cheryl",
-      "lastName": "Jones",
-      "phoneNumber": 6151110000,
-      "email": "hers@her.com",
-      "company": "NSS",
-      "position": "recruiter",
-      "location": "Nashville",
-      "notes": "has huskies too",
-      "followUpFrequency": ""
-    },
-    {
-      "id": 1,
-      "contactCreated": "",
-      "firstName": "Mike",
-      "userId": 2,
-      "lastName": "Winter",
-      "phoneNumber": 6151110000,
-      "email": "heRr@her.com",
-      "company": "NSS",
-      "position": "recruiter",
-      "location": "Nashville",
-      "notes": "has huskies too",
-      "followUpFrequency": ""
+      "id": 10,
+      "firstName": "Jennifer",
+      "lastName": "Starkey",
+      "position": "y54w y54w nyb",
+      "userId": 2
     },
     {
       "firstName": "Jennifer",
       "lastName": "Starkey",
       "phone": "y5465467547",
-      "email": "loveliecompany@gmail.com",
       "position": "y54w y54w nyb",
       "userId": 2,
-      "id": 4
+      "id": 11
+    },
+    {
+      "firstName": "Mike",
+      "lastName": "bnjdsa",
+      "phone": "njfkdsa",
+      "email": "bjkfdsa",
+      "company": "bnkjfdsan",
+      "position": "bjkvdsa",
+      "userId": 2,
+      "id": 12
     }
   ]
 }

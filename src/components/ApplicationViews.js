@@ -5,7 +5,8 @@ import {Home} from "./Home"
 import {ContactProvider} from "./contacts/ContactProvider"
 import {ContactList} from "./contacts/ContactList"
 import { ContactDetail } from "./contacts/ContactDetails"
-// import { ContactForm } from "./contacts/ContactForm"
+import { EditForm} from "./contacts/ContactForm"
+import { ContactSearch } from "./contacts/SearchProvider"
 
 export const ApplicationViews = (props) =>{
     return (
@@ -18,6 +19,7 @@ export const ApplicationViews = (props) =>{
         <ContactProvider>
             <Route exact path="/contacts">
                 <ContactList />
+                <ContactSearch />
             </Route>
         </ContactProvider>
 
@@ -29,7 +31,7 @@ export const ApplicationViews = (props) =>{
 
         <ContactProvider>
             <Route exact path="/contacts/edit/:contactId(\d+)">
-                <ContactDetail />
+                <EditForm />
             </Route>
         </ContactProvider>
 

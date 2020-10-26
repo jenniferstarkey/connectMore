@@ -8,7 +8,6 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 import SaveOutlinedIcon from '@material-ui/icons/SaveOutlined';
-import {ContactForm} from "./ContactList"
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -17,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 export const ContactDetail =()=>{
-    const { getContactById, editContacts } = useContext(ContactContext)
+    const { getContactById, editContact, removeContact } = useContext(ContactContext)
     const [contact, setContact] = useState({})
     const {contactId}=useParams();
     const [isLoading, setIsLoading] = useState(true);
@@ -33,35 +32,46 @@ export const ContactDetail =()=>{
       }}, [])
 
     return(
-        ContactForm(),
+        
         <section className="contact">
+          <Button 
+          variant="contained"
+          color="secondary"
+          className={classes.button}
+          onClick={() => { history.push("/contacts")}}>
+            Back
+          </Button>
             <Button
                  variant="contained"
                 color="secondary"
                 className={classes.button}
-                startIcon={<DeleteOutlineOutlinedIcon />}>
+                startIcon={<DeleteOutlineOutlinedIcon />}
+                onClick={ () => {
+                    removeContact(contact.id)
+                    .then(() => {
+                      history.push("/contacts")
+                    })}}>
                 Delete
             </Button>  
             <Button 
                  variant="contained"
                 color="secondary"
                 className={classes.button}
-                startIcon={<SaveOutlinedIcon />} onClick={ ()=>{
-                    editContacts(contact.id)
-                    // .then(() =>{
-                    //     history.push(`contacts/`)
-                    // })
-                }}>
-                Save
+                startIcon={<SaveOutlinedIcon />}  onClick={ () => {
+                  editContact(contact.id)
+                  .then(() => {
+                    history.push(`/contacts/edit/${contact.id}`)
+                  })}}>
+                Edit
             </Button> 
-            <h3 className="contact_name" id="contactDetail" contentEditable="true">{contact.firstName}</h3>
-            <div className="contact_company"contentEditable="true">Company:{contact.company}</div>
-            <div className="contact_position" contentEditable="true">{contact.position}</div>
-            <div className="contact_email" contentEditable="true">{contact.email}</div>
-            <div className="contact_phoneNumber"contentEditable="true">{contact.phoneNumber}</div>
-            <div className="contact_location" contentEditable="true">{contact.location}</div>
-            <div className="contact_notes" contentEditable="true">{contact.notes}</div>
-            <div className="contact_followUp" contentEditable="true">{contact.followUpFrequency}</div>
+            <h3 className="contact_name" id="contactDetail" >{contact.firstName}</h3>
+            <div className="contact_company" >{contact.company}</div>
+            <div className="contact_position">{contact.position}</div>
+            <div className="contact_email">{contact.email}</div>
+            <div className="contact_phoneNumber">{contact.phoneNumber}</div>
+            <div className="contact_location">{contact.location}</div>
+            <div className="contact_notes" >{contact.notes}</div>
+            <div className="contact_followUp" >{contact.followUpFrequency}</div>
         </section>
     )
             }

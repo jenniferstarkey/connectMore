@@ -22,10 +22,11 @@ import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 import { DataGrid } from '@material-ui/data-grid';
+import { ContactSearch } from "./SearchProvider";
 
 const useStyles = makeStyles((theme) => ({
     table: {
-        minWidth: 200,
+        minWidth: 650,
     },
     appBar: {
         position: 'relative',
@@ -66,7 +67,7 @@ export const ContactForm = () => {
     useEffect(() => {
         if (contactId) {
             getContactById(contactId)
-                .then(article => {
+                .then(contact => {
                     setContact(contact)
                     setIsLoading(false)
                 })
@@ -181,6 +182,7 @@ export const ContactForm = () => {
                             placeholder="Phone Number"
                             required
                             autoFocus
+                            maxLength="10" pattern="[0-9]{10}"
                             onChange={handleControlledInputChange}
                         />
                     </div>
@@ -257,16 +259,20 @@ export const ContactForm = () => {
 
 
 //LIST OF CONTACTS
-export const ContactList = () => {
-    const { contacts, getContacts } = useContext(ContactContext)
+export const ContactList = ({}) => {
+    const { contacts, getContacts, searchTerms } = useContext(ContactContext)
     const classes = useStyles();
     const [records, setRecords] = useState()
     const [filterFn, setFilterFn] = useState({ fn: items => { return items; } })
+    const [filteredContacts, setFiltered] = useState([])
 
+    
+    
     useEffect(() => {
         getContacts()
     }, [])
     const history = useHistory()
+
 
     const headCells = [
         { id: 'fullName', label: 'Employee Name' },
@@ -275,6 +281,16 @@ export const ContactList = () => {
         { id: 'department', label: 'Department', disableSorting: true },
     ]
 
+    useEffect(()=>{
+        if (searchTerms !== "") {
+            // If the search field is not blank, display matching animals
+            const subset = contacts.filter(contact => contact.firstName.toLowerCase().includes(searchTerms))
+            setFiltered(subset)
+        } else {
+            // If the search field is blank, display all animals
+            setFiltered(contacts)
+        }
+    }, [searchTerms, contacts])
 
     return (
         <>
@@ -283,7 +299,7 @@ export const ContactList = () => {
             </div>
 
 
-            {/* <TableContainer component={Paper}>
+            <TableContainer component={Paper}>
                 <Table className={classes.table} aria-label="simple table">
                     <TableHead>
                         <TableRow>
@@ -293,7 +309,7 @@ export const ContactList = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {contacts.map((contact) => (
+                        {filteredContacts.map(contact => 
                             <TableRow key={contact.id}>
                                 <TableCell component="th" scope="row">
                                <Link to={`/contacts/details/${contact.id}`}>
@@ -303,10 +319,10 @@ export const ContactList = () => {
                                 <TableCell align="right">{contact.email}</TableCell>
                                 <TableCell align="right">{contact.location}</TableCell>
                             </TableRow>
-                        ))}
+)}
                     </TableBody>
                 </Table>
-            </TableContainer> */}
+            </TableContainer> 
         </>
     );
 }
