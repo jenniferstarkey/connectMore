@@ -3,13 +3,16 @@ import {ContactContext} from "./ContactProvider"
 import {useHistory, useParams} from "react-router-dom"
 
 export const EditForm =() =>{
-    const { addContact, getContactById, editContact } = useContext(ContactContext)
+    const { getContactById, editContact } = useContext(ContactContext)
     const [contact, setContact] = useState({})
     const { contactId } = useParams();
     const [isLoading, setIsLoading] = useState(true);
     const history = useHistory();
 
     const handleControlledInputChange = (event) => {
+        const updateContact={...contact}
+        updateContact[event.target.name]= event.target.value
+        setContact(updateContact)
     }
 
 useEffect(() => {
@@ -39,7 +42,7 @@ const constructEdit =() =>{
                 location: contact.location,
                 notes: contact.notes,
                 userId: contact.userId
-            }).then(() => history.push(`/contacts/detail/${contact.id}`))
+            }).then(() => history.push(`/contacts/details/${contact.id}`))
 }
 return (    
     <form>
