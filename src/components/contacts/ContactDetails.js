@@ -3,11 +3,11 @@ import React, {useContext, useEffect, useState} from "react"
 import {ContactContext} from "./ContactProvider"
 import {useParams, useHistory} from "react-router-dom"
 import "./Contact.css"
-
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 import SaveOutlinedIcon from '@material-ui/icons/SaveOutlined';
+import { ContactSearch } from "./SearchProvider"
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -30,9 +30,9 @@ export const ContactDetail =()=>{
                     setContact(response)
                 })         
       }}, [])
-
+      
     return(
-        
+      
         <section className="contact">
           <Button 
           variant="contained"
@@ -43,31 +43,29 @@ export const ContactDetail =()=>{
           </Button>
             <Button
                  variant="contained"
-                color="secondary"
-                className={classes.button}
+                 color="secondary"
+                 className={classes.button}
                 startIcon={<DeleteOutlineOutlinedIcon />}
                 onClick={ () => {
-                    removeContact(contact.id)
-                    .then(() => {
-                      history.push("/contacts")
-                    })}}>
+                  removeContact(contact.id)
+                  .then(() => {
+                    history.push("/contacts")
+                  })}}>
                 Delete
             </Button>  
             <Button 
                  variant="contained"
-                color="secondary"
-                className={classes.button}
-                startIcon={<SaveOutlinedIcon />}  onClick={ () => {
-                  editContact(contact.id)
-                  .then(() => {
-                    history.push(`/contacts/edit/${contact.id}`)
-                  })}}>
+                 color="secondary"
+                 className={classes.button}
+                 startIcon={<SaveOutlinedIcon />}  onClick={()=> {
+                     history.push(`/contacts/edit/${contact.id}`)
+                 }}>
                 Edit
             </Button> 
-            <h3 className="contact_name" id="contactDetail" >{contact.firstName}</h3>
+            <h3 className="contact_name" id="contactDetail" >{contact.firstName} {contact.lastName}</h3>
             <div className="contact_company" >{contact.company}</div>
             <div className="contact_position">{contact.position}</div>
-            <div className="contact_email">{contact.email}</div>
+            <a href="mailto:{contact.email}" target="_blank">{contact.email}</a>
             <div className="contact_phoneNumber">{contact.phoneNumber}</div>
             <div className="contact_location">{contact.location}</div>
             <div className="contact_notes" >{contact.notes}</div>

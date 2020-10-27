@@ -38,7 +38,7 @@ export const ContactProvider = (props) => {
     }
 //EDIT EXISTING CONTACTS
 const editContact = contact => {
-    return fetch(` http://localhost:8088/contacts/${contact.id}`,{
+    return fetch(`http://localhost:8088/contacts/${contact.id}`,{
         method: "PUT",
         headers: {
             "Content-Type": "application/json"

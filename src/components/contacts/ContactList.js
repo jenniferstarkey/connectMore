@@ -5,6 +5,8 @@ import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams, Link } from "react-router-dom"
 import { ContactContext } from "./ContactProvider"
 import "./Contact.css"
+
+//MATERIAL UI IMPORTS
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -21,9 +23,8 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
-import { DataGrid } from '@material-ui/data-grid';
-import { ContactSearch } from "./SearchProvider";
 
+//MATERIAL UI INFO
 const useStyles = makeStyles((theme) => ({
     table: {
         minWidth: 650,
@@ -41,8 +42,21 @@ const useStyles = makeStyles((theme) => ({
     },
     searchInput: {
         width: '75%'
-    }
-}));
+    },
+    paper: {
+        padding: theme.spacing(2),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+      },
+      root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        '& > *': {
+          margin: theme.spacing(1),
+          width: theme.spacing(16),
+          height: theme.spacing(16),
+        }
+    }}));
 
 //TRANSITION FOR THE FORM POP UP
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -102,6 +116,7 @@ export const ContactForm = () => {
                 position: contact.position,
                 location: contact.location,
                 notes: contact.notes,
+                followUpFrequency: contact.followUpFrequency,
                 userId: parseInt(localStorage.getItem("connectMore_user"))
             }).then(() => history.push("/contacts"))
         }
@@ -147,6 +162,7 @@ export const ContactForm = () => {
                 </AppBar>
 
                 <fieldset>
+                
                     <div className="form-group">
                         <input htmlFor="firstName"
                             defaultValue={contact.firstName}
@@ -262,8 +278,6 @@ export const ContactForm = () => {
 export const ContactList = ({}) => {
     const { contacts, getContacts, searchTerms } = useContext(ContactContext)
     const classes = useStyles();
-    const [records, setRecords] = useState()
-    const [filterFn, setFilterFn] = useState({ fn: items => { return items; } })
     const [filteredContacts, setFiltered] = useState([])
 
     
@@ -300,7 +314,7 @@ export const ContactList = ({}) => {
 
 
             <TableContainer component={Paper}>
-                <Table className={classes.table} aria-label="simple table">
+                <Table id="contactTable" className={classes.table} aria-label="simple table">
                     <TableHead>
                         <TableRow>
                             <TableCell>Name</TableCell>
@@ -308,6 +322,7 @@ export const ContactList = ({}) => {
                             <TableCell align="right">Location</TableCell>
                         </TableRow>
                     </TableHead>
+                   
                     <TableBody>
                         {filteredContacts.map(contact => 
                             <TableRow key={contact.id}>
@@ -321,6 +336,7 @@ export const ContactList = ({}) => {
                             </TableRow>
 )}
                     </TableBody>
+                    
                 </Table>
             </TableContainer> 
         </>

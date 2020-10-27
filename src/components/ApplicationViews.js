@@ -3,18 +3,23 @@ import React from "react"
 import {Route} from "react-router-dom"
 import {Home} from "./Home"
 import {ContactProvider} from "./contacts/ContactProvider"
-import {ContactList} from "./contacts/ContactList"
+import { ContactList} from "./contacts/ContactList"
 import { ContactDetail } from "./contacts/ContactDetails"
-import { EditForm} from "./contacts/ContactForm"
 import { ContactSearch } from "./contacts/SearchProvider"
+import { EditForm } from "./contacts/ContactForm"
 
 export const ApplicationViews = (props) =>{
     return (
         <>
     {/* home */}
+    <ContactProvider>
+    <ContactList>
         <Route exact path="/">
             <Home />
         </Route>
+    </ContactList>
+    </ContactProvider>
+
     {/* contacts */}
         <ContactProvider>
             <Route exact path="/contacts">
