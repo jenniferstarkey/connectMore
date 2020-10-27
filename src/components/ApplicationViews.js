@@ -13,18 +13,17 @@ export const ApplicationViews = (props) =>{
         <>
     {/* home */}
     <ContactProvider>
-    <ContactList>
         <Route exact path="/">
             <Home />
+            <ContactList />
         </Route>
-    </ContactList>
     </ContactProvider>
 
     {/* contacts */}
         <ContactProvider>
             <Route exact path="/contacts">
-                <ContactList />
                 <ContactSearch />
+                <ContactList />
             </Route>
         </ContactProvider>
 

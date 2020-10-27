@@ -23,8 +23,14 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 //MATERIAL UI INFO
+
 const useStyles = makeStyles((theme) => ({
     table: {
         minWidth: 650,
@@ -47,16 +53,7 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(2),
         textAlign: 'center',
         color: theme.palette.text.secondary,
-      },
-      root: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        '& > *': {
-          margin: theme.spacing(1),
-          width: theme.spacing(16),
-          height: theme.spacing(16),
-        }
-    }}));
+          }}));
 
 //TRANSITION FOR THE FORM POP UP
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -71,11 +68,17 @@ export const ContactForm = () => {
     const { contactId } = useParams();
     const [isLoading, setIsLoading] = useState(true);
     const history = useHistory();
+    const [value, setValue] = React.useState('daily');
+
+
 
     const handleControlledInputChange = (event) => {
         const newContact = { ...contact }
         newContact[event.target.name] = event.target.value
         setContact(newContact)
+        const updateFollowUp={...value}
+        updateFollowUp[event.target.name]=event.target.value
+        setValue(updateFollowUp)
     }
 
     useEffect(() => {
@@ -104,7 +107,9 @@ export const ContactForm = () => {
                 position: contact.position,
                 location: contact.location,
                 notes: contact.notes,
-                userId: contact.userId
+                userId: contact.userId,
+                followUpFrequency: contact.followUpFrequency,
+
             }).then(() => history.push(`/contacts/detail/${contact.id}`))
         } else {
             addContact({
@@ -117,6 +122,7 @@ export const ContactForm = () => {
                 location: contact.location,
                 notes: contact.notes,
                 followUpFrequency: contact.followUpFrequency,
+                contactCreated: Date.now(),
                 userId: parseInt(localStorage.getItem("connectMore_user"))
             }).then(() => history.push("/contacts"))
         }
@@ -138,7 +144,7 @@ export const ContactForm = () => {
 //INPUT FORM
     return (
         <div>
-            <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+            <Button id="button" variant="outlined" color="primary" onClick={handleClickOpen}>
                 {contactId ? <>Update your contact</> : <>Add new contact</>}
              </Button>
             <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
@@ -150,7 +156,8 @@ export const ContactForm = () => {
                         <Typography variant="h6" className={classes.title}>
                             New Connection
                         </Typography>
-                        <Button autoFocus color="inherit"
+                        <Button id="button"
+                        autoFocus color="inherit"
                             onClick={event => {
                                 event.preventDefault() 
                                 constructContactObj()
@@ -267,6 +274,20 @@ export const ContactForm = () => {
                             onChange={handleControlledInputChange}
                         />
                     </div>
+                    <FormControl component="fieldset">
+                        <FormLabel component="legend">How often would you like to follow up?</FormLabel>
+                            <RadioGroup aria-label="followUp" name="followUpFrequency" defaultValue={contact.followUpFrequency} onChange={handleControlledInputChange}>
+                                <FormControlLabel value="daily" control={<Radio />} label="daily" />
+                                <FormControlLabel value="weekly" control={<Radio />} label="weekly" />
+                                <FormControlLabel value="biWeekly" control={<Radio />} label="biWeekly" />
+                                <FormControlLabel value="monthly" control={<Radio />} label="monthly" />
+                                <FormControlLabel value="biMonthly" control={<Radio />} label="biMonthly" />
+                                <FormControlLabel value="quarterly" control={<Radio />} label="quarterly" />
+                                <FormControlLabel value="yearly" control={<Radio />} label="yearly" />
+
+
+                            </RadioGroup>
+                    </FormControl>
                 </fieldset>
             </Dialog>
         </div>
@@ -278,6 +299,8 @@ export const ContactForm = () => {
 export const ContactList = ({}) => {
     const { contacts, getContacts, searchTerms } = useContext(ContactContext)
     const classes = useStyles();
+    const [records, setRecords] = useState()
+    const [filterFn, setFilterFn] = useState({ fn: items => { return items; } })
     const [filteredContacts, setFiltered] = useState([])
 
     
@@ -313,7 +336,7 @@ export const ContactList = ({}) => {
             </div>
 
 
-            <TableContainer component={Paper}>
+            <TableContainer component={Paper} className={classes.root}>
                 <Table id="contactTable" className={classes.table} aria-label="simple table">
                     <TableHead>
                         <TableRow>
@@ -331,7 +354,8 @@ export const ContactList = ({}) => {
                                {contact.firstName} {contact.lastName}
                                 </Link>
                                 </TableCell>
-                                <TableCell align="right">{contact.email}</TableCell>
+                                <TableCell align="right">
+                                <a href="mailto:{contact.email}" target="_blank">{contact.email}</a></TableCell>
                                 <TableCell align="right">{contact.location}</TableCell>
                             </TableRow>
 )}

@@ -1,6 +1,12 @@
 import React, { useContext, useEffect, useState } from "react"
 import {ContactContext} from "./ContactProvider"
 import {useHistory, useParams} from "react-router-dom"
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
+
 
 export const EditForm =() =>{
     const { getContactById, editContact } = useContext(ContactContext)
@@ -8,22 +14,25 @@ export const EditForm =() =>{
     const { contactId } = useParams();
     const [isLoading, setIsLoading] = useState(true);
     const history = useHistory();
+    const [value, setValue] = React.useState('daily');
+
 
     const handleControlledInputChange = (event) => {
         const updateContact={...contact}
         updateContact[event.target.name]= event.target.value
         setContact(updateContact)
+        const updateFollowUp={...value}
+        updateFollowUp[event.target.name]=event.target.value
+        setValue(updateFollowUp)
     }
-
+    
 useEffect(() => {
     if (contactId) {
-        console.log(contactId)
         getContactById(contactId)
             .then(thecontacts => {
                 setContact(thecontacts)
                 setIsLoading(false)
             })
-.then(console.log("contact", contact))
 
     } else {
         setIsLoading(false)
@@ -41,7 +50,8 @@ const constructEdit =() =>{
                 position: contact.position,
                 location: contact.location,
                 notes: contact.notes,
-                userId: contact.userId
+                userId: contact.userId,
+                followUpFrequency: contact.followUpFrequency,
             }).then(() => history.push(`/contacts/details/${contact.id}`))
 }
 return (    
@@ -153,6 +163,20 @@ return (
                         onChange={handleControlledInputChange}
                     />
                 </div>
+                <FormControl component="fieldset">
+                        <FormLabel component="legend">How often would you like to follow up?</FormLabel>
+                            <RadioGroup aria-label="followUp" name="followUpFrequency" defaultValue={contact.followUpFrequency} onChange={handleControlledInputChange}>
+                                <FormControlLabel value="daily" control={<Radio />} label="daily" />
+                                <FormControlLabel value="weekly" control={<Radio />} label="weekly" />
+                                <FormControlLabel value="biWeekly" control={<Radio />} label="biWeekly" />
+                                <FormControlLabel value="monthly" control={<Radio />} label="monthly" />
+                                <FormControlLabel value="biMonthly" control={<Radio />} label="biMonthly" />
+                                <FormControlLabel value="quarterly" control={<Radio />} label="quarterly" />
+                                <FormControlLabel value="yearly" control={<Radio />} label="yearly" />
+
+
+                            </RadioGroup>
+                    </FormControl>
             </fieldset>
             <button onClick={event =>{
                 event.preventDefault()
