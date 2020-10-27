@@ -34,14 +34,14 @@ export const ContactDetail =()=>{
     return(
       
         <section className="contact">
-          <Button 
+          <Button id="button"
           variant="contained"
           color="secondary"
           className={classes.button}
           onClick={() => { history.push("/contacts")}}>
             Back
           </Button>
-            <Button
+            <Button id="button"
                  variant="contained"
                  color="secondary"
                  className={classes.button}
@@ -53,7 +53,7 @@ export const ContactDetail =()=>{
                   })}}>
                 Delete
             </Button>  
-            <Button 
+            <Button id="button"
                  variant="contained"
                  color="secondary"
                  className={classes.button}

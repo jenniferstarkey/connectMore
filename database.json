@@ -70,6 +70,7 @@
       "firstName": "Jennifer",
       "lastName": "Starkey",
       "position": "y54w y54w nyb",
+      "followUpFrequency": "",
       "userId": 2
     },
     {
@@ -77,6 +78,7 @@
       "firstName": "Jenn",
       "lastName": "Starkey",
       "position": "y54w y54w nyb",
+      "followUpFrequency": "daily",
       "userId": 2
     },
     {
@@ -84,12 +86,75 @@
       "firstName": "Jennifer",
       "lastName": "Star",
       "email": "loveliecompany@gmail.com",
+      "followUpFrequency": "daily",
       "userId": 2
     },
     {
-      "firstName": "james",
+      "firstName": "Jennifer",
+      "lastName": "Starkey",
+      "followUpFrequency": "daily",
       "userId": 2,
-      "id": 15
+      "id": 14
+    },
+    {
+      "id": 15,
+      "firstName": "Jennifer",
+      "lastName": "Starkey",
+      "userId": 2
+    },
+    {
+      "id": 16,
+      "firstName": "Jennifer",
+      "lastName": "Starkey",
+      "email": "loveliecompany@gmail.com",
+      "userId": 2,
+      "followUpFrequency": "biMonthly"
+    },
+    {
+      "firstName": "James",
+      "lastName": "fdnsbjka",
+      "phone": "bjkfdsah",
+      "email": "bjkfdsa",
+      "company": "bjkfdsa",
+      "position": "bhkfdsab",
+      "location": "bkfdsabj",
+      "notes": "bjkdfabjkl",
+      "userId": 2,
+      "id": 17
+    },
+    {
+      "id": 18,
+      "firstName": "James",
+      "lastName": "hfdsajkl;",
+      "email": "hjdfskah",
+      "company": "fdsbjakl",
+      "position": "nbjkfdsabjk",
+      "location": "nbkjfdsabjk",
+      "notes": "bjkfdsabj",
+      "userId": 2,
+      "followUpFrequency": "daily"
+    },
+    {
+      "firstName": "James",
+      "lastName": "fjdsk",
+      "phone": "nhjfd",
+      "email": "nj",
+      "company": "nbjm",
+      "location": "bjhk",
+      "notes": "jhk",
+      "followUpFrequency": "daily",
+      "userId": 2,
+      "id": 19
+    },
+    {
+      "firstName": "Jennifer",
+      "lastName": "Starkey",
+      "phone": "y546546754",
+      "location": "y54nwby54w",
+      "followUpFrequency": "biMonthly",
+      "contactCreated": 1603817804701,
+      "userId": 2,
+      "id": 20
     }
   ]
 }
