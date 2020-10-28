@@ -4,6 +4,8 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams, Link } from "react-router-dom"
 import { ContactContext } from "./ContactProvider"
+import {add } from "date-fns"
+
 import "./Contact.css"
 
 //MATERIAL UI IMPORTS
@@ -28,12 +30,13 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import Grid from '@material-ui/core/Grid';
 
 //MATERIAL UI INFO
 
 const useStyles = makeStyles((theme) => ({
     table: {
-        minWidth: 650,
+        minWidth: 800,
     },
     appBar: {
         position: 'relative',
@@ -76,9 +79,6 @@ export const ContactForm = () => {
         const newContact = { ...contact }
         newContact[event.target.name] = event.target.value
         setContact(newContact)
-        const updateFollowUp={...value}
-        updateFollowUp[event.target.name]=event.target.value
-        setValue(updateFollowUp)
     }
 
     useEffect(() => {
@@ -123,6 +123,7 @@ export const ContactForm = () => {
                 notes: contact.notes,
                 followUpFrequency: contact.followUpFrequency,
                 contactCreated: Date.now(),
+                lastContact: Date.now(),
                 userId: parseInt(localStorage.getItem("connectMore_user"))
             }).then(() => history.push("/contacts"))
         }
@@ -139,8 +140,14 @@ export const ContactForm = () => {
     const handleClose = () => {
         setOpen(false);
     };
+    // const daily = add(Date.now(), {hours: 24})
+    // const weekly = add(Date.now(), { days:7})
+    // const biWeekly = add(Date.now(),{weeks:2})
+    // const monthly = add(Date.now(), {months:1})
+    // const biMonthly = add(Date.now(), {months:2})
+    // const quarterly = add(Date.now(), {months:3})
+    // const yearly = add(Date.now(), {years:1})
     
-
 //INPUT FORM
     return (
         <div>
@@ -157,7 +164,7 @@ export const ContactForm = () => {
                             New Connection
                         </Typography>
                         <Button id="button"
-                        autoFocus color="inherit"
+                            autoFocus color="inherit"
                             onClick={event => {
                                 event.preventDefault() 
                                 constructContactObj()
@@ -273,17 +280,17 @@ export const ContactForm = () => {
                             autoFocus
                             onChange={handleControlledInputChange}
                         />
-                    </div>
+                    </div>   
                     <FormControl component="fieldset">
                         <FormLabel component="legend">How often would you like to follow up?</FormLabel>
                             <RadioGroup aria-label="followUp" name="followUpFrequency" defaultValue={contact.followUpFrequency} onChange={handleControlledInputChange}>
-                                <FormControlLabel value="daily" control={<Radio />} label="daily" />
-                                <FormControlLabel value="weekly" control={<Radio />} label="weekly" />
-                                <FormControlLabel value="biWeekly" control={<Radio />} label="biWeekly" />
-                                <FormControlLabel value="monthly" control={<Radio />} label="monthly" />
-                                <FormControlLabel value="biMonthly" control={<Radio />} label="biMonthly" />
-                                <FormControlLabel value="quarterly" control={<Radio />} label="quarterly" />
-                                <FormControlLabel value="yearly" control={<Radio />} label="yearly" />
+                                <FormControlLabel value="1" control={<Radio />} label="daily" />
+                                <FormControlLabel value={7} control={<Radio />} label="weekly" />
+                                <FormControlLabel value="14" control={<Radio />} label="biWeekly" />
+                                <FormControlLabel value="30" control={<Radio />} label="monthly" />
+                                <FormControlLabel value="60" control={<Radio />} label="biMonthly" />
+                                <FormControlLabel value="90" control={<Radio />} label="quarterly" />
+                                <FormControlLabel value="365" control={<Radio />} label="yearly" />
 
 
                             </RadioGroup>
@@ -331,12 +338,13 @@ export const ContactList = ({}) => {
 
     return (
         <>
-            <div className="contacts-table">
+            <div className="contacts-form">
                 {ContactForm()}
             </div>
-
-
-            <TableContainer component={Paper} className={classes.root}>
+               
+            <TableContainer id="tableContainer" className={classes.root}>
+            <Grid container justify="center" alignItems="center">
+                <Paper>
                 <Table id="contactTable" className={classes.table} aria-label="simple table">
                     <TableHead>
                         <TableRow>
@@ -357,11 +365,11 @@ export const ContactList = ({}) => {
                                 <TableCell align="right">
                                 <a href="mailto:{contact.email}" target="_blank">{contact.email}</a></TableCell>
                                 <TableCell align="right">{contact.location}</TableCell>
-                            </TableRow>
-)}
+                            </TableRow>)}
                     </TableBody>
-                    
                 </Table>
+            </Paper>
+            </Grid>
             </TableContainer> 
         </>
     );

@@ -7,8 +7,6 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
 
   
 
@@ -69,7 +67,7 @@ export const Navbar = props => {
         onClose={handleClose}>
         <StyledMenuItem onClick={handleClose}><Link to="/">My Dashboard</Link></StyledMenuItem>
         <StyledMenuItem onClick={handleClose}><Link to="/contacts">My Connections</Link></StyledMenuItem>
-        <StyledMenuItem onClick={handleClose}>My Follow Ups</StyledMenuItem>
+        <StyledMenuItem onClick={handleClose}><Link to="/followup">My Follow Ups</Link></StyledMenuItem>
         <StyledMenuItem onClick={handleClose}>Logout</StyledMenuItem>
       </StyledMenu>
     </div>
