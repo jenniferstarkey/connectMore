@@ -52,109 +52,52 @@
   ],
   "contacts": [
     {
-      "id": 2,
-      "contactCreated": "",
-      "userId": 3,
-      "firstName": "Jane",
-      "lastName": "Winter",
-      "phoneNumber": 6151110000,
-      "email": "her3@her.com",
-      "company": "NSS",
-      "position": "recruiter",
-      "location": "Nashville",
-      "notes": "has huskies too",
-      "followUpFrequency": ""
-    },
-    {
-      "id": 10,
       "firstName": "Jennifer",
       "lastName": "Starkey",
-      "position": "y54w y54w nyb",
-      "followUpFrequency": "",
-      "userId": 2
-    },
-    {
-      "id": 11,
-      "firstName": "Jenn",
-      "lastName": "Starkey",
-      "position": "y54w y54w nyb",
-      "followUpFrequency": "daily",
-      "userId": 2
-    },
-    {
-      "id": 13,
-      "firstName": "Jennifer",
-      "lastName": "Star",
+      "phone": "hgfd543654",
       "email": "loveliecompany@gmail.com",
-      "followUpFrequency": "daily",
-      "userId": 2
-    },
-    {
-      "firstName": "Jennifer",
-      "lastName": "Starkey",
-      "followUpFrequency": "daily",
+      "company": "hgfdjuyey by54",
+      "position": "y54w y54w nyb",
+      "location": "y54nwby54w",
+      "notes": "y5n4wbhfroius gy8r0a ytirfs",
+      "followUpFrequency": 7,
+      "contactCreated": 1603909096193,
+      "lastContact": 1603909096193,
       "userId": 2,
-      "id": 14
-    },
-    {
-      "id": 15,
-      "firstName": "Jennifer",
-      "lastName": "Starkey",
-      "userId": 2
-    },
-    {
-      "id": 16,
-      "firstName": "Jennifer",
-      "lastName": "Starkey",
-      "email": "loveliecompany@gmail.com",
-      "userId": 2,
-      "followUpFrequency": "biMonthly"
-    },
-    {
-      "firstName": "James",
-      "lastName": "fdnsbjka",
-      "phone": "bjkfdsah",
-      "email": "bjkfdsa",
-      "company": "bjkfdsa",
-      "position": "bhkfdsab",
-      "location": "bkfdsabj",
-      "notes": "bjkdfabjkl",
-      "userId": 2,
-      "id": 17
-    },
-    {
-      "id": 18,
-      "firstName": "James",
-      "lastName": "hfdsajkl;",
-      "email": "hjdfskah",
-      "company": "fdsbjakl",
-      "position": "nbjkfdsabjk",
-      "location": "nbkjfdsabjk",
-      "notes": "bjkfdsabj",
-      "userId": 2,
-      "followUpFrequency": "daily"
-    },
-    {
-      "firstName": "James",
-      "lastName": "fjdsk",
-      "phone": "nhjfd",
-      "email": "nj",
-      "company": "nbjm",
-      "location": "bjhk",
-      "notes": "jhk",
-      "followUpFrequency": "daily",
-      "userId": 2,
-      "id": 19
+      "id": 26
     },
     {
       "firstName": "Jennifer",
       "lastName": "Starkey",
       "phone": "y546546754",
-      "location": "y54nwby54w",
-      "followUpFrequency": "biMonthly",
-      "contactCreated": 1603817804701,
+      "email": "loveliecompany@gmail.com",
+      "followUpFrequency": "1",
+      "contactCreated": 1603911413666,
+      "lastContact": 1603911413666,
       "userId": 2,
-      "id": 20
+      "id": 27
+    },
+    {
+      "firstName": "Jennifer",
+      "lastName": "Starkey",
+      "followUpFrequency": "7",
+      "contactCreated": 1603911454609,
+      "lastContact": 1503909434609,
+      "userId": 2,
+      "id": 28
+    },
+    {
+      "contactCreated": 1603918546711,
+      "lastContact": 1603918546711,
+      "userId": 2,
+      "id": 29
+    }
+  ],
+  "FollowUP": [
+    {
+      "id": "1",
+      "date": "",
+      "contactId": ""
     }
   ]
 }

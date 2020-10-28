@@ -5,7 +5,7 @@ import {ContactContext} from "./ContactProvider"
 
 
 export const ContactSearch =()=>{
-  const { setSearchTerms } = useContext(ContactContext)
+  const { search, setSearchTerms } = useContext(ContactContext)
 
   useEffect(() => {
     setSearchTerms("")

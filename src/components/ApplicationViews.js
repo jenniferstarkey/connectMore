@@ -7,6 +7,7 @@ import { ContactList} from "./contacts/ContactList"
 import { ContactDetail } from "./contacts/ContactDetails"
 import { ContactSearch } from "./contacts/SearchProvider"
 import { EditForm } from "./contacts/ContactForm"
+import {FollowUpList} from "./followUp/FollowUpList"
 
 export const ApplicationViews = (props) =>{
     return (
@@ -39,11 +40,11 @@ export const ApplicationViews = (props) =>{
             </Route>
         </ContactProvider>
 
-        {/* <ContactProvider>
-            <Route exact path="/events/create">
-                <ContactForm />
+        <ContactProvider>
+            <Route exact path="/followup">
+                <FollowUpList />
             </Route>
-        </ContactProvider> */}
+        </ContactProvider>
         </>
     
 
