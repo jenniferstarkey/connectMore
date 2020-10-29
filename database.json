@@ -73,7 +73,7 @@
       "email": "loveliecompany@gmail.com",
       "followUpFrequency": "1",
       "contactCreated": 1603911413666,
-      "lastContact": 1603911413666,
+      "lastContact": 1603936747658,
       "userId": 2,
       "id": 27
     },
@@ -82,13 +82,13 @@
       "lastName": "Starkey",
       "followUpFrequency": "7",
       "contactCreated": 1603911454609,
-      "lastContact": 1503909434609,
+      "lastContact": 1603936752939,
       "userId": 2,
       "id": 28
     },
     {
       "contactCreated": 1603918546711,
-      "lastContact": 1603918546711,
+      "lastContact": 1503918546711,
       "userId": 2,
       "id": 29
     }

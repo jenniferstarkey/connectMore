@@ -2,8 +2,8 @@
 //when contact is selected, return to contact profile
 import React, {useState, useContext, useEffect} from "react"
 import {useHistory, Link} from "react-router-dom"
-import { ContactList } from "../contacts/ContactList"
-import { ContactContext } from "../contacts/ContactProvider"
+import { ContactList } from "./ContactList"
+import { ContactContext } from "./ContactProvider"
 import differenceInCalendarDays from 'date-fns/differenceInCalendarDays'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -55,18 +55,12 @@ const useStyles = makeStyles((theme) => ({
 
 
 export const FollowUpList = () =>{
-    const {contacts, getContacts} = useContext(ContactContext)
+    const {contacts, getContacts, updateFollowUp} = useContext(ContactContext)
     const [contact, setContact] = useState({})
     const history = useHistory()
     const [filteredContacts, setFiltered] = useState([])
 
     const classes = useStyles();
-
-    const handleControlledInputChange = (event) => {
-        const updateFollowUp = { ...contact}
-        updateFollowUp [event.target.name] = event.target.value
-        setContact(updateFollowUp)
-    }
     let now = new Date()
     
     
@@ -91,7 +85,7 @@ setFiltered(overDue)
 
 
 
-const thisOne =() =>{
+const theFollowUps =() =>{
     if (filteredContacts) {
         return (
         <>
@@ -104,8 +98,17 @@ const thisOne =() =>{
                 </TableCell>
                 <TableCell align="right">
                 <a href="mailto:{contact.email}" target="_blank">{contact.email}</a></TableCell>
-                <TableCell align="right">{contact.location}</TableCell>
-            </TableRow>)}
+                <TableCell align="right"><Button id="button"
+                    variant="contained"
+                    color="secondary"
+                    className={classes.button}
+                    onClick={() => { 
+                        updateFollowUp(contact.id)
+                        .then(theFollowUps())
+                        }}>
+                        Done
+                    </Button></TableCell>
+                </TableRow>)}
     </>)
 
     }
@@ -127,7 +130,7 @@ return(
                     </TableHead>
                    
                     <TableBody>
-                        {thisOne()}
+                        {theFollowUps()}
                     </TableBody>
                 </Table>
             </Paper>

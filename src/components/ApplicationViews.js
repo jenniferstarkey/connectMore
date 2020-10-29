@@ -7,7 +7,7 @@ import { ContactList} from "./contacts/ContactList"
 import { ContactDetail } from "./contacts/ContactDetails"
 import { ContactSearch } from "./contacts/SearchProvider"
 import { EditForm } from "./contacts/ContactForm"
-import {FollowUpList} from "./followUp/FollowUpList"
+import {FollowUpList} from "./contacts/FollowUpList"
 
 export const ApplicationViews = (props) =>{
     return (
