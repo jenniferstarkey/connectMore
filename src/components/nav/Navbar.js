@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
+import {logOut} from "../auth/Logout"
 
   
 
@@ -68,7 +69,7 @@ export const Navbar = props => {
         <StyledMenuItem onClick={handleClose}><Link to="/">My Dashboard</Link></StyledMenuItem>
         <StyledMenuItem onClick={handleClose}><Link to="/contacts">My Connections</Link></StyledMenuItem>
         <StyledMenuItem onClick={handleClose}><Link to="/followup">My Follow Ups</Link></StyledMenuItem>
-        <StyledMenuItem onClick={handleClose}>Logout</StyledMenuItem>
+        <StyledMenuItem onClick={logOut}>Logout</StyledMenuItem>
       </StyledMenu>
     </div>
   );

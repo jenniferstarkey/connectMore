@@ -55,10 +55,22 @@ const editContact = contact => {
         })
         .then(getContacts)
     }
+//UPDATE THE LAST CONTACTED TIME
+    const updateFollowUp = contactId =>{
+        return fetch (`http://localhost:8088/contacts/${contactId}`,{
+            method: 'PATCH',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                lastContact: Date.now()
+            })
+            
+        })    }
 
     return(
         <ContactContext.Provider value={{
-            contacts, getContacts, getContactById, addContact, editContact, removeContact, setSearchTerms, searchTerms,
+            contacts, getContacts, getContactById, addContact, editContact, removeContact, setSearchTerms, searchTerms, updateFollowUp
         }}>
             {props.children}
         </ContactContext.Provider>
